@@ -5,6 +5,8 @@ public class BettingCounter : MonoBehaviour, IInteractable
 
     public bool MenuIsOpen = false;
 
+    public GameObject BettingUI;
+
     public void Interact()
     {
         if (MenuIsOpen)
@@ -12,5 +14,7 @@ public class BettingCounter : MonoBehaviour, IInteractable
 
         MenuIsOpen = true;
         Debug.Log("Opened");
+        BettingUI.SetActive(true);
+        BettingUI.GetComponent<BettingUIHandler>().OpenMenu();
     }
 }
