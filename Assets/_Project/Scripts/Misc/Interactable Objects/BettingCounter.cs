@@ -16,5 +16,9 @@ public class BettingCounter : MonoBehaviour, IInteractable
         Debug.Log("Opened");
         BettingUI.SetActive(true);
         BettingUI.GetComponent<BettingUIHandler>().OpenMenu();
+
+        GameManager.Instance.ChangeState(GameState.Betting);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

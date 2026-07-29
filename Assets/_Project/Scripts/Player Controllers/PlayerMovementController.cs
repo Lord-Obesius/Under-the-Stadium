@@ -8,6 +8,8 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Look")]
     public float mouseSensitivity = 0.1f;
+    public bool canLookAround = true;
+    public bool canMove = true;
 
     public Transform playerCamera;
 
@@ -56,7 +58,6 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -76,6 +77,9 @@ public class PlayerMovementController : MonoBehaviour
 
     void Move()
     {
+        if (!canMove)
+            return;
+
         Vector3 movement =
             transform.right * moveInput.x +
             transform.forward * moveInput.y;
@@ -97,6 +101,9 @@ public class PlayerMovementController : MonoBehaviour
 
     void Look()
     {
+        if (!canLookAround)
+            return;
+
         float mouseX =
             lookInput.x * mouseSensitivity;
 

@@ -29,5 +29,18 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
+
+        if (CurrentState == GameState.Betting)
+        {
+            PlayerMovementController playerCont = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
+            playerCont.canLookAround = false;
+            playerCont.canMove = false;
+        }
+        else if (CurrentState == GameState.MainMenu)
+        {
+            PlayerMovementController playerCont = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
+            playerCont.canLookAround = true;
+            playerCont.canMove = true;
+        }
     }
 }
