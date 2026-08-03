@@ -20,6 +20,11 @@ public class UIManager : MonoBehaviour
 
         currentWindow = window;
         currentWindow.Open();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        Time.timeScale = 0;
     }
 
     public void CloseCurrent()
@@ -29,5 +34,10 @@ public class UIManager : MonoBehaviour
 
         currentWindow.Close();
         currentWindow = null;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        Time.timeScale = 1;
     }
 }
