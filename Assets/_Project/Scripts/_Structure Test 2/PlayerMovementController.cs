@@ -101,6 +101,9 @@ public class PlayerMovementController : MonoBehaviour
 
     void Look()
     {
+        if (UIManager.Instance.MenuOpen)
+            return;
+
         if (!canLookAround)
             return;
 
