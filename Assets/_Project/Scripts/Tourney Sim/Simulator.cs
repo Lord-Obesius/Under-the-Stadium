@@ -13,6 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Start()
     {
         currentBracket = GenerateBracket();
+        SimulateTournament();
     }
 
     // Update is called once per frame
@@ -21,10 +22,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
         
     }
 
+    void SimulateTournament()
+    {
+        do
+        {
+            currentBracket = SimulateRound(currentBracket);
+        }
+        while (currentBracket.matches.Count >= 1);
+    }
+
     Bracket GenerateBracket()
     {
         Bracket generated = new Bracket();
-        generated.roundNum = 1;
         List<Blade> entries = new List<Blade>(contestants);
 
         while (entries.Count > 0)
@@ -43,13 +52,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
             entries.RemoveAt(randIndex);
 
             Match pairing = new Match(one, two);
+
+            generated.matches.Add(pairing);
         }
 
         return generated;
     }
 
-    void SimulateRound(Bracket currentBracket)
+    Bracket SimulateRound(Bracket currentBracket)
     {
+        Debug.Log("======= Beginning Round {currentBracket.roundNum} =======");
+
         List<Blade> winners = new List<Blade>();
         for (int i = 0; i < currentBracket.matches.Count; i++)
         {
@@ -61,10 +74,38 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (UnityEngine.Random.Range(0, 100) <= Onechance)
             {
                 winners.Add(one);
+                Debug.Log($"Blade one ({one.Name}) defeated {two.Name}");
                 continue;
             }
 
             winners.Add(two);
+
+            Debug.Log($"Blade two ({two.Name}) defeated {one.Name}");
         }
+
+        if (winners.Count == 1)
+        {
+            DisplayWinner(winners[0]);
+            currentBracket.matches = new List<Match>();
+            return currentBracket;
+        }
+
+        List<Match> newMatches = new();
+
+        for (int i = 0; i < winners.Count; i += 2)
+        {
+            newMatches.Add(new Match(winners[i], winners[i + 1]));
+        }
+
+        currentBracket.matches = newMatches;
+
+        currentBracket.roundNum++;
+
+        return currentBracket;
+    }
+
+    void DisplayWinner(Blade winner)
+    {
+        Debug.Log($"Winner: {winner.Name}");
     }
 }
