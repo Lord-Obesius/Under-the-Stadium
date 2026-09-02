@@ -308,6 +308,8 @@ MonoBehaviour:
   currentBracket:
     matches: []
     roundNum: 0
+  statPower: 2
+  minimumChance: 5
 --- !u!4 &698240142
 Transform:
   m_ObjectHideFlags: 0
