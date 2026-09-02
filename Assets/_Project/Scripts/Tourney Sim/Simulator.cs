@@ -70,7 +70,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Blade one = current.contestantOne;
             Blade two = current.contestantTwo;
 
-            double Onechance = (one.GetStatPercentage() / (one.GetStatPercentage() + two.GetStatPercentage())) * 100;
+            double Onechance = one.GetStatPercentage() * 100 / (one.GetStatPercentage() + two.GetStatPercentage());
+
+            Debug.Log($"{one.Name} has a {Onechance}% chance of defeating {two.Name}");
+
             if (UnityEngine.Random.Range(0, 100) <= Onechance)
             {
                 winners.Add(one);
