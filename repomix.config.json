@@ -1,0 +1,37 @@
+{
+  "include": [
+    "Assets/**/*.cs",
+    "Assets/**/*.asmdef",
+    "ProjectSettings/*.asset"
+  ],
+  "ignore": {
+    "customPatterns": [
+      "**/Library/**",
+      "**/Temp/**",
+      "**/Obj/**",
+      "**/Logs/**",
+      "**/UserSettings/**",
+      "**/.vs/**",
+      "**/.idea/**",
+      "**/*.sln",
+      "**/*.csproj",
+      "**/Artifacts/**",
+      "**/MemoryCaptures/**",
+      "Assets/Plugins/**",
+      "**/*.meta",
+      "**/*.unity",
+      "**/*.prefab",
+      "**/*.asset",
+      "**/*.mat",
+      "**/*.fbx",
+      "**/*.png",
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.wav",
+      "**/*.mp3",
+      "**/*.ttf",
+      "**/*.anim",
+      "**/*.controller"
+    ]
+  }
+}
