@@ -9,6 +9,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     public Bracket currentBracket;
 
+    public float upsetThreshold;
+
     [Header("Winner Probability")]
     [Tooltip("Higher values make stats have a stronger influence on the winner.")]
     [Range(1f, 4f)]
@@ -201,7 +203,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     /// </summary>
     void LogMatchResult(Blade winner, Blade loser, double winnerChance, float roll)
     {
-        if (winnerChance <= 25)
+        if (winnerChance <= upsetThreshold)
         {
             Debug.LogWarning("Upset !!!");
             Debug.LogWarning("Upset !!!");

@@ -340,6 +340,7 @@ MonoBehaviour:
   currentBracket:
     matches: []
     roundNum: 0
+  upsetThreshold: 25.25
   statPower: 2
   minimumChance: 5
 --- !u!4 &698240142
